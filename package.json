@@ -1,0 +1,44 @@
+{
+  "name": "lempit",
+  "version": "0.0.1",
+  "description": "Project scaffolder",
+  "preferGlobal": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "generator",
+    "scaffold",
+    "boilerplate",
+    "khaos"
+  ],
+  "bin": {
+    "lempit": "bin/lempit.js",
+    "lempit-init": "bin/lempit-init.js"
+  },
+  "author": {
+    "name": "Budi Adiono",
+    "email": "budiadiono@gmail.com",
+    "url": "http://www.budiadiono.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lempit/lempit.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.2.10",
+    "chalk": "^2.1.0",
+    "commander": "^2.11.0",
+    "consolidate": "^0.10.0",
+    "download-git-repo": "^1.0.1",
+    "handlebars": "^2.0.0",
+    "inquirer": "^3.2.3",
+    "metalsmith": "^1.7.0",
+    "ora": "^1.3.0",
+    "rimraf": "^2.6.1",
+    "user-home": "^2.0.0",
+    "util": "^0.10.3"
+  }
+}
