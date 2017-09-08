@@ -1,6 +1,6 @@
 {
   "name": "lempit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Project scaffolder",
   "preferGlobal": true,
   "scripts": {
