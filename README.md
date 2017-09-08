@@ -46,7 +46,7 @@ To create a template you just need to create files filled with mustache template
 
 ### Handlebars helpers
 
-You can use two commonly used Handlebars helpers `if`, `if_eq` and `unless_eq`. The `if_eq` and `unless_eq` helpers intended to create a multiple choice questions. Thanks to [vue-cli](https://github.com/vuejs/vue-cli) for the idea!
+You can use two commonly used Handlebars helpers `raw-helper`, `if`, `if_eq` and `unless_eq`. The `if_eq` and `unless_eq` helpers intended to create a multiple choice questions. Thanks to [vue-cli](https://github.com/vuejs/vue-cli) for the idea!
 
 ### Metadata file
 
