@@ -42,9 +42,94 @@ $ lempit init lempit/koa-typescript my-project
 
 
 ## Template
-**Lempit** works like [Khaos](https://github.com/segmentio/khaos) to make a template you just need to create files filled with mustache template tags and put it under directory named `template`. Take a look at [`https://github.com/lempit/koa-typescript`](https://github.com/lempit/koa-typescript) for example.
+To create a template you just need to create files filled with mustache template tags and put it under directory named `template`. **Lempit** works like [Khaos](https://github.com/segmentio/khaos) with some additional features:
+
+### Handlebars helpers
+
+You can use two commonly used Handlebars helpers `if`, `if_eq` and `unless_eq`. The `if_eq` and `unless_eq` helpers intended to create a multiple choice questions. Thanks to [vue-cli](https://github.com/vuejs/vue-cli) for the idea!
+
+### Metadata file
+
+While asking user to answer the questions, you may want to display a words rather than variable names. All you need to do is to create file either `meta.json` or `meta.js` under the root directory of your template. If you are using Handlebars helpers `if_eq` or `unless_eq`, then **metadata file** is required to define the **choices**.
+
+### Example
+
+*./template/package.json*
+```json
+{
+    "name": "{{name}}",
+    "version": "0.0.1",
+    "description": "{{description}}",
+{{#if preferGlobal}}
+    "preferGlobal": true,
+{{/if}}
+{{#unless_eq license "mit"}}
+    "private": true,
+{{/unless_eq}}
+    "license": "{{#if_eq license "mit"}}MIT{{/if_eq}}{{#if_eq license "isc"}}ISC{{/if_eq}}"    
+}
+```
+
+*./meta.json*
+```json
+{
+  "prompts": {
+    "name": {
+      "message": "Name of project",
+      "required": true
+    },
+    "preferGlobal": {
+      "message": "Prefer global?"
+    },
+    "license": {			
+      "message": "Pick an appropriate license",
+      "choices": [
+        {
+          "name": "MIT (https://opensource.org/licenses/MIT)",
+          "value": "mit",
+          "short": "MIT"
+        },
+        {
+          "name": "ISC (https://opensource.org/licenses/ISC",
+          "value": "isc",
+          "short": "ISC"
+        }
+      ]
+    }
+  }
+}
+```
+
+*Prompts:*
+
+![Prompts](assets/screenshots/prompt-example.png)
+
+*Result:*
+
+```json
+{
+    "name": "cool-project",
+    "version": "0.0.1",
+    "description": "Some cool project!",
+    "preferGlobal": true,
+    "private": true,
+    "license": "ISC"    
+}
+```
 
 A [Khaos](https://github.com/segmentio/khaos) template should be works too for **Lempit**.
+
+
+## Credits
+[Khaos](https://github.com/segmentio/khaos)
+
+[Metalsmith](http://www.metalsmith.io/)
+
+[handlebarsjs](http://handlebarsjs.com/)
+
+[Inquirer.js](https://github.com/SBoudrias/Inquirer.js)
+
+[vue-cli](https://github.com/vuejs/vue-cli)
 
 
 ## License

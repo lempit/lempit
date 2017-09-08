@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var generate = require('../lib/generate.js');
-var helper = require('../lib/helper');
+var utils = require('../lib/utils');
 var path = require('path');
 var chalk = require('chalk');
 
@@ -27,7 +27,7 @@ program.parse(process.argv);
 if (program.args.length < 2)
   return program.help();
 
-let targetDir = helper.getWorkDir(1);
+let targetDir = utils.getWorkDir(1);
 
 generate({
   dest: targetDir, 
