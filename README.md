@@ -2,6 +2,10 @@
 
 > A simple CLI project scaffolder similar to [Khaos](https://github.com/segmentio/khaos).
 
+[![npm version](https://badge.fury.io/js/lempit.svg)](https://badge.fury.io/js/lempit)
+[![Build Status](https://travis-ci.org/lempit/lempit.svg?branch=master)](https://travis-ci.org/lempit/lempit)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/lempit/lempit/master/LICENSE) 
+
 ## Installation
 
 Prerequisites: [node.js](https://nodejs.org/en/), [npm](https://www.npmjs.com/get-npm) and [git](https://git-scm.com/).
