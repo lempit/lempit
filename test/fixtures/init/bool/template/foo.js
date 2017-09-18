@@ -1,0 +1,6 @@
+/**
+ * {{#if accept}}
+ * ACCEPTED
+ * {{/if}}
+ *  
+*/
