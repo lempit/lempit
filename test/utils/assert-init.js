@@ -57,8 +57,8 @@ module.exports = function(fixture, done) {
   // capture output data
   child.stdout.on("data", function(data) {
     // get question
-    let q = data.toString();
-    let field = findField(q);
+    var q = data.toString();
+    var field = findField(q);
     if (field && answering !== field) {
       answering = field;
       setTimeout(function() {

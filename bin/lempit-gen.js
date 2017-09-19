@@ -30,7 +30,7 @@ program.parse(process.argv);
 if (program.args.length < 1)
   return program.help();
 
-let targetDir = utils.getWorkDir(1);
+var targetDir = utils.getWorkDir(1);
 
 generate({
   dest: targetDir, 
