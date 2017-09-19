@@ -9,9 +9,8 @@ var path = require("path");
  * @returns 
  */
 module.exports = function(cmd, args, callback) {
-  var root = path.resolve(__dirname, "../../");
-  var opts = { cwd: root, stdio: "pipe" };
-  var _args = ["bin/lempit-" + cmd];
+  var root = path.resolve(__dirname, "../../");  
+  var _args = [path.resolve(root, "bin/lempit-") + cmd];
 
   // apply arguments
   args = args || [];
@@ -20,13 +19,14 @@ module.exports = function(cmd, args, callback) {
   });
 
   // spawning lempit-<cmd>.
+  var opts = { cwd: process.cwd(), stdio: "pipe" };
   var child = spawn("node", _args, opts);
 
   process.on("exit", function() {
     child.kill();
   });
 
-	// process callback if supplied
+  // process callback if supplied
   if (callback) {
     var stdout = "",
       stderr = "";

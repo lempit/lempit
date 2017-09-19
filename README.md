@@ -16,11 +16,17 @@ $ npm install -g lempit
 
 ## Usage
 
+### lempit init
+
+Is to create project boilerplate from local template or git repository template.
+
 ``` bash
 $ lempit init <template-name> <project-name> [options]
 ```
 
-### template-name
+#### Arguments
+
+##### template-name
 Git repository or local folder that contains project template. To create project from [`https://github.com/lempit/koa-typescript`](https://github.com/lempit/koa-typescript) you can simply specify `lempit/koa-typescript` as the `template-name`. For other repositories other than Github you have to specify the name of the repository in front of template directory:
 
 **GitHub** - `github:owner/template-name` or `simply owner/template-name`
@@ -29,34 +35,34 @@ Git repository or local folder that contains project template. To create project
 
 **Bitbucket** - `bitbucket:owner/template-name`
 
-### project-name
+##### project-name
 The name of project.
 
-### options
+##### options
 -c, --clean  clean target directory
 
 -h, --help   output usage information
 
 
-## Example
+#### Example
 
 ``` bash
 $ lempit init lempit/koa-typescript my-project
 ```
 
 
-## Template
+### Template
 To create a template you just need to create files filled with mustache template tags and put it under directory named `template`. **Lempit** works like [Khaos](https://github.com/segmentio/khaos) with some additional features:
 
-### Handlebars helpers
+#### Handlebars helpers
 
 You can use two commonly used Handlebars helpers `raw-helper`, `if`, `if_eq` and `unless_eq`. The `if_eq` and `unless_eq` helpers intended to create a multiple choice questions. Thanks to [vue-cli](https://github.com/vuejs/vue-cli) for the idea!
 
-### Metadata file
+#### Metadata file
 
 While asking user to answer the questions, you may want to display a words rather than variable names. All you need to do is to create file either `meta.json` or `meta.js` under the root directory of your template. If you are using Handlebars helpers `if_eq` or `unless_eq`, then **metadata file** is required to define the **choices**.
 
-### Example
+#### Example
 
 *./template/package.json*
 ```json
@@ -122,6 +128,68 @@ While asking user to answer the questions, you may want to display a words rathe
 ```
 
 A [Khaos](https://github.com/segmentio/khaos) template should be works too for **Lempit**.
+
+
+### lempit gen
+
+Is to generate project files in a project.
+This command is very usefull when you often writing code using similar pattern. 
+All you have todo is to store your templates in `.lempit` directory under project root directory,
+then execute `lempit gen <directory or file in .lempit directory> <destination directory or file> [options]`.
+
+Put your `meta.json` as well as if needed in `.lempit` directory.
+
+Use `-f` or `--file` options if you want to generate single file with different name.
+
+#### Structure
+
+```
+root directory
+├── .lempit
+|    ├── meta.json              # lempit metadata            
+|    ├── foo_template_dir       # a template directory
+|    |   ├── foo1.js            #   template files
+|    |   └── foo2.js
+|    ├── baz_template_dir       # another template directory
+|    |   ├── baz1.js            #   template files
+|    |   └── baz2.js
+|    └── foo_template.js        # a template file
+└── Your project dir/files      # actual project files
+
+```
+
+#### Usage example
+
+
+##### Generate from directory
+
+```bash
+$ lempit gen foo_template_dir ./components/foo
+```
+
+Generate files (`foo1.js` and `foo2.js`) from `/.lempit/foo_template_dir` directory into `/components/foo`. 
+This action will creates `/components/foo` under you root project directory automatically. 
+
+
+##### Generate from file
+
+```bash
+$ lempit gen foo_template_dir/foo1.js ./components/foo
+```
+
+Generate file from `/.lempit/foo_template_dir/foo1.js` directory into `/components/foo` directory.
+
+
+##### Generate from file as new file name (-f option)
+
+```bash
+$ lempit gen foo_template_dir/foo1.js ./components/meh1.js -f
+```
+
+Generate file from `/.lempit/foo_template_dir/foo1.js` directory into `/components/meh1.js`.
+
+
+
 
 
 ## Credits

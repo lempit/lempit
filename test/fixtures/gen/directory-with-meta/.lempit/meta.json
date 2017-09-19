@@ -1,0 +1,24 @@
+{
+	"prompts": {
+		"number": {			
+      "message": "number",
+      "choices": [
+        {
+          "name": "One",
+          "value": "one",
+          "short": "one"
+        },
+        {
+          "name": "Two",
+          "value": "two",
+          "short": "two"
+        },
+        {
+          "name": "Three",
+          "value": "three",
+          "short": "three"
+        }
+      ]
+    }
+	}
+}

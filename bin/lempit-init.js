@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var generate = require('../lib/generate.js');
+var generate = require('../lib/generate.js').init;
 var utils = require('../lib/utils');
-var path = require('path');
 var chalk = require('chalk');
 
 program
