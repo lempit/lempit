@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var program = require('commander');
-var generate = require('../lib/generate.js').new;
-var utils = require('../lib/utils');
-var chalk = require('chalk');
+const program = require('commander');
+const generate = require('../lib/generate').new;
+const utils = require('../lib/utils');
+const chalk = require('chalk');
 
 program
   .usage('<directory or file in .lempit directory> <destination directory or file> [options]')
@@ -30,7 +30,7 @@ program.parse(process.argv);
 if (program.args.length < 1)
   return program.help();
 
-var targetDir = utils.getWorkDir(1);
+const targetDir = utils.getWorkDir(1);
 
 generate({
   dest: targetDir, 

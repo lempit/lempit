@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var program = require('commander');
-var generate = require('../lib/generate.js').init;
-var utils = require('../lib/utils');
-var chalk = require('chalk');
+const program = require('commander');
+const generate = require('../lib/generate').init;
+const utils = require('../lib/utils');
+const chalk = require('chalk');
 
 program
   .usage('<source> <project-name> [options]')
@@ -26,7 +26,7 @@ program.parse(process.argv);
 if (program.args.length < 2)
   return program.help();
 
-var targetDir = utils.getWorkDir(1);
+const targetDir = utils.getWorkDir(1);
 
 generate({
   dest: targetDir, 
