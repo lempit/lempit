@@ -11,5 +11,5 @@ program
 
 // whitelisting args
 if (["init", "gen"].indexOf(program.args[0]) < 0) {
-	return program.help()
+  return program.help();
 }
