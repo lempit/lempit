@@ -16,7 +16,7 @@
   "bin": {
     "lempit": "bin/lempit.js",
     "lempit-init": "bin/lempit-init.js",
-    "lempit-gen": "bin/lempit-gen.js"
+    "lempit-new": "bin/lempit-new.js"
   },
   "author": {
     "name": "Budi Adiono",

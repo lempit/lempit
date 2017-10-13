@@ -1,7 +1,7 @@
 var assert = require("assert");
 var utils = require("./utils");
 var assertLempitInit = utils.assertLempitInit;
-var assertLempitGen = utils.assertLempitGen;
+var assertLempitNew = utils.assertLempitNew;
 var lempit = utils.lempit;
 
 describe("#lempit cli tests", function() {
@@ -26,26 +26,26 @@ describe("#lempit cli tests", function() {
     });
   });
 
-  describe("#simple gen tests", function() {
-    // $ lempit gen component <dest>
+  describe("#simple new tests", function() {
+    // $ lempit new component <dest>
     it("should generate all files in `component` to `<dest>` folder.", function(done) {
-      assertLempitGen("simple", "component", null, done);
+      assertLempitNew("simple", "component", null, done);
     });
-    // $ lempit gen meh.js <dest>
+    // $ lempit new meh.js <dest>
     it("should generate meh.js file to `<dest>` folder.", function(done) {
-      assertLempitGen("simple", "meh.js", null, done);
+      assertLempitNew("simple", "meh.js", null, done);
     });
-    // $ lempit gen component <dest>
+    // $ lempit new component <dest>
     it("should generate all files in `component` to `<dest>` folder with meta options.", function(done) {
-      assertLempitGen("file-with-meta", "foo.js", null, done);
+      assertLempitNew("file-with-meta", "foo.js", null, done);
     });
-    // lempit gen foo.js <dest>
+    // lempit new foo.js <dest>
     it("should generate foo.js file to `<dest>` folder with meta options.", function(done) {
-      assertLempitGen("file-with-meta", "foo.js", null, done);
+      assertLempitNew("file-with-meta", "foo.js", null, done);
     });
-    // lempit gen foo.js <dest>
+    // lempit new foo.js <dest>
     it("should generate foo.js file to `<dest>/penk.js` folder with meta options.", function(done) {
-      assertLempitGen("file-with-meta", "foo.js", ["./penk.js", "-f"], done);
+      assertLempitNew("file-with-meta", "foo.js", ["./penk.js", "-f"], done);
     });
   });
 });

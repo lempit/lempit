@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var generate = require('../lib/generate.js').gen;
+var generate = require('../lib/generate.js').new;
 var utils = require('../lib/utils');
 var chalk = require('chalk');
 
@@ -14,13 +14,13 @@ program.on('--help', function () {
   console.log('  Examples:');
   console.log('');
   console.log(chalk.gray(`    # generate new 'component/*' into './components/foo`));
-  console.log('    $ lempit gen component ./components/foo');
+  console.log('    $ lempit new component ./components/foo');
   console.log('');
   console.log(chalk.gray(`    # generate new 'modules/action.js' into './new-modules/action.js`));
-  console.log('    $ lempit gen modules/action.js ./new-modules');
+  console.log('    $ lempit new modules/action.js ./new-modules');
   console.log('');
   console.log(chalk.gray(`    # generate new 'modules/action.js' into './modules/new-action.js`));
-  console.log('    $ lempit gen modules/action.js ./modules/new-action.js -f');
+  console.log('    $ lempit new modules/action.js ./modules/new-action.js -f');
   console.log('');
   console.log('');
 });

@@ -15,7 +15,7 @@ const dest = path.resolve(__dirname, "tmp");
  * @returns 
  */
 function getFixture(name) {
-  const src = path.resolve(__dirname, "../fixtures", "gen", name);
+  const src = path.resolve(__dirname, "../fixtures", "new", name);
   const answers = require(path.join(src, "answer.js"));
   return {
     src,
@@ -45,7 +45,7 @@ function findField(str) {
 }
 
 /**
- * Assert lempit-gen test.
+ * Assert lempit-new test.
  * 
  * @param {string} fixture fixture name
  * @param {Function} done callback
@@ -71,7 +71,7 @@ module.exports = function(fixture, source, options, done) {
     args = [source, result, '-f'];
   }
 
-  var child = lempit("gen", args);
+  var child = lempit("new", args);
   var answering = "";
 
   // capture output data

@@ -130,12 +130,12 @@ While asking user to answer the questions, you may want to display a words rathe
 A [Khaos](https://github.com/segmentio/khaos) template should be works too for **Lempit**.
 
 
-### lempit gen
+### lempit new
 
 Is to generate project files in a project.
 This command is very usefull when you often writing code using similar pattern. 
 All you have todo is to store your templates in `.lempit` directory under project root directory,
-then execute `lempit gen <directory or file in .lempit directory> <destination directory or file> [options]`.
+then execute `lempit new <directory or file in .lempit directory> <destination directory or file> [options]`.
 
 Put your `meta.json` as well as if needed in `.lempit` directory.
 
@@ -164,7 +164,7 @@ root directory
 ##### Generate from directory
 
 ```bash
-$ lempit gen foo_template_dir ./components/foo
+$ lempit new foo_template_dir ./components/foo
 ```
 
 Generate files (`foo1.js` and `foo2.js`) from `/.lempit/foo_template_dir` directory into `/components/foo`. 
@@ -174,7 +174,7 @@ This action will creates `/components/foo` under you root project directory auto
 ##### Generate from file
 
 ```bash
-$ lempit gen foo_template_dir/foo1.js ./components/foo
+$ lempit new foo_template_dir/foo1.js ./components/foo
 ```
 
 Generate file from `/.lempit/foo_template_dir/foo1.js` directory into `/components/foo` directory.
@@ -183,7 +183,7 @@ Generate file from `/.lempit/foo_template_dir/foo1.js` directory into `/componen
 ##### Generate from file as new file name (-f option)
 
 ```bash
-$ lempit gen foo_template_dir/foo1.js ./components/meh1.js -f
+$ lempit new foo_template_dir/foo1.js ./components/meh1.js -f
 ```
 
 Generate file from `/.lempit/foo_template_dir/foo1.js` directory into `/components/meh1.js`.
