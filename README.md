@@ -180,10 +180,10 @@ $ lempit new foo_template_dir/foo1.js ./components/foo
 Generate file from `/.lempit/foo_template_dir/foo1.js` directory into `/components/foo` directory.
 
 
-##### Generate from file as new file name (-f option)
+##### Generate from file as new file name (-r or --rename option)
 
 ```bash
-$ lempit new foo_template_dir/foo1.js ./components/meh1.js -f
+$ lempit new foo_template_dir/foo1.js ./components/meh1.js -r
 ```
 
 Generate file from `/.lempit/foo_template_dir/foo1.js` directory into `/components/meh1.js`.

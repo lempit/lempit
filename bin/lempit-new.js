@@ -7,7 +7,7 @@ var chalk = require('chalk');
 
 program
   .usage('<directory or file in .lempit directory> <destination directory or file> [options]')
-  .option('-f, --file', 'generate to file instead of directory (only works for source file only)');
+  .option('-r, --rename', 'generate file with different name (only works for single file only)');
 
 program.on('--help', function () {
   console.log('');
@@ -20,7 +20,7 @@ program.on('--help', function () {
   console.log('    $ lempit new modules/action.js ./new-modules');
   console.log('');
   console.log(chalk.gray(`    # generate new 'modules/action.js' into './modules/new-action.js`));
-  console.log('    $ lempit new modules/action.js ./modules/new-action.js -f');
+  console.log('    $ lempit new modules/action.js ./modules/new-action.js -r');
   console.log('');
   console.log('');
 });
@@ -34,5 +34,5 @@ var targetDir = utils.getWorkDir(1);
 
 generate({
   dest: targetDir, 
-  file: program.file
+  rename: program.rename
 });
