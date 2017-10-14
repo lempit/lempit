@@ -33,6 +33,7 @@ if (program.args.length < 1)
 const targetDir = utils.getWorkDir(1);
 
 generate({
+  template: program.args[0],
   destName: program.args[1],
   dest: targetDir, 
   rename: program.rename

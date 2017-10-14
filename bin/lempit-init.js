@@ -29,6 +29,7 @@ if (program.args.length < 2)
 const targetDir = utils.getWorkDir(1);
 
 generate({
+  template: program.args[0],
   dest: targetDir, 
   clean: program.clean
 });
