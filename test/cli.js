@@ -4,6 +4,8 @@ var assertLempitInit = utils.assertLempitInit;
 var assertLempitNew = utils.assertLempitNew;
 var lempit = utils.lempit;
 
+process.setMaxListeners(0);
+
 describe("#lempit cli tests", function() {
   describe("#common tests", function() {
     it("should show help without any args", function(done) {
@@ -17,6 +19,9 @@ describe("#lempit cli tests", function() {
   describe("#simple init tests", function() {
     it("simple input", function(done) {
       assertLempitInit("simple", done);
+    });
+    it("handlerbars strings", function(done) {
+      assertLempitInit("handlebars-strings", done);
     });
     it("boolean input", function(done) {
       assertLempitInit("bool", done);
