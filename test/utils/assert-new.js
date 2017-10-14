@@ -1,12 +1,10 @@
-var spawn = require("child_process").spawn;
-var path = require("path");
-var assertDir = require("assert-dir-equal");
-var assertFile = require("./assert-file-equal");
-var rm = require("rimraf").sync;
-var lempit = require("./lempit");
-var fs = require("fs");
-
-const dest = path.resolve(__dirname, "tmp");
+const path = require("path");
+const assertDir = require("assert-dir-equal");
+const assertFile = require("./assert-file-equal");
+const lempit = require("./lempit");
+const fs = require("fs");
+const fse = require("fs-extra");
+const dest = path.resolve(__dirname, "../_tmp");
 
 /**
  * Get test fixture.
@@ -32,14 +30,14 @@ function getFixture(name) {
  */
 function findField(str) {
   const whiteList = ["*", "?"];
-  var skip = true;
+  let skip = true;
   whiteList.forEach(w => {
     if (str.startsWith(w)) skip = false;
   });
 
   if (skip) return "";
 
-  var res = /.\s(\w+):/g.exec(str);
+  const res = /.\s(\w+):/g.exec(str);
   if (res && res.length > 1) return res[1];
   throw "could not resolve field [" + str + "].";
 }
@@ -51,35 +49,40 @@ function findField(str) {
  * @param {Function} done callback
  */
 module.exports = function(fixture, source, options, done) {
-  var f = getFixture(fixture);
-  var stderr = "";
+  const f = getFixture(fixture);
+  let stderr = "";
 
   // change current directory to selected test fixture dir
   process.chdir(f.src);
 
   options = options || [];
 
-  var result = path.join(dest, source);
-  var toFile = options.indexOf("-f") > -1 || options.indexOf("--file") > 1;
+  // copy .lempit to /tmp/.lempit
+  fse.copySync(path.join(f.src, ".lempit"), path.join(dest, ".lempit"));
+
+  // should execute lempit under /tmp
+  process.chdir(dest);
+
+  let result = path.join(dest, source);
+  const toFile = options.indexOf("-r") > -1 || options.indexOf("--rename") > 1;
   if (toFile) {
-    result = path.join(dest, options[0]);    
+    result = path.join(dest, options[0]);
   }
 
-  var args = [source, dest];
-
-  if (toFile) {
-    args = [source, result, '-f'];
+  const args = [source];
+  for (let o in options) {
+    args.push(options[o]);
   }
 
-  var child = lempit("new", args);
-  var answering = "";
+  const child = lempit("new", args);
+  let answering = "";
 
   // capture output data
   child.stdout.on("data", function(data) {
     // get question
-    var q = data.toString();
+    const q = data.toString();
 
-    var field = findField(q);
+    const field = findField(q);
     if (field && answering !== field) {
       answering = field;
       setTimeout(function() {
@@ -96,16 +99,31 @@ module.exports = function(fixture, source, options, done) {
 
   // done
   child.on("close", function(code) {
-    if (code === 1) done(new Error(stderr));
+    if (code === 1)
+      return clearTmp(function() {
+        done(new Error(stderr));
+      });
 
-    const target = path.join(f.expected, source);
-    if (fs.lstatSync(target).isFile()) {
-      assertFile(result, target);
-    } else {
-      assertDir(dest, path.join(f.expected, source));
+    try {
+      const target = path.join(f.expected, source);
+      if (fs.lstatSync(target).isFile()) {
+        assertFile(result, target);
+      } else {        
+        assertDir(dest, target);
+      }
+
+      clearTmp(done);
+    } catch (error) {
+      clearTmp(function() {
+        done(new Error(error));
+      });
     }
-
-    rm(dest);
-    done();
   });
 };
+
+function clearTmp(done) {
+  setTimeout(function() {
+    fse.emptyDirSync(dest);
+    done();
+  }, 100);
+}

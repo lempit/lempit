@@ -20,5 +20,8 @@
         }
       ]
     }
-	}
+  },
+  "maps": {
+    "actions": "the-actions"
+  }
 }

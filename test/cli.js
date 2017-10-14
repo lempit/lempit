@@ -47,5 +47,9 @@ describe("#lempit cli tests", function() {
     it("should generate foo.js file to `<dest>/penk.js` file (renamed) with meta options.", function(done) {
       assertLempitNew("file-with-meta", "foo.js", ["./penk.js", "-r"], done);
     });
+    // lempit new actions/bar.js <dest>/penk.js -r
+    it("should generate actions/bar.js file to `<dest>/the-actions/meh/bar.js` file with meta.maps options.", function(done) {
+      assertLempitNew("directory-with-meta", "actions", ["foo"], done);
+    });
   });
 });

@@ -189,6 +189,32 @@ $ lempit new foo_template_dir/foo1.js ./components/meh1.js -r
 Generate file from `/.lempit/foo_template_dir/foo1.js` directory into `/components/meh1.js`.
 
 
+#### Directory Maps
+
+You can specify the directory maps against the templates, so **lempit** will generates the template automatically into specified directory.
+
+##### Example
+
+*./.lempit/meta.json*
+```json
+{
+  "maps": {
+    "actions": "the-actions"
+  }
+}
+```
+
+Everytime you generate template(s) from `actions` **lempit** generates the results under `/the-actions` directory.
+
+Example template: `./lempit/actions/bar.js`
+
+Execute:
+
+`lempit new actions foo` --> `/the-actions/foo/bar.js`
+
+`lempit new actions/bar.js foo` --> `/the-actions/foo/bar.js`
+
+`lempit new actions/bar.js foo/meh.js -r` --> `/the-actions/foo/meh.js`
 
 
 

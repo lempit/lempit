@@ -47,6 +47,8 @@
   },
   "devDependencies": {
     "assert-dir-equal": "^1.1.0",
-    "mocha": "^3.5.3"
+    "fs-extra": "^4.0.2",
+    "mocha": "^3.5.3",
+    "sinon": "^4.0.1"
   }
 }
