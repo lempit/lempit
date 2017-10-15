@@ -217,6 +217,11 @@ Execute:
 `lempit new actions/bar.js foo/meh.js -r` --> `/the-actions/foo/meh.js`
 
 
+### lempit list
+
+This is more like a templating wizard. When you execute `lempit list` it will list available templates in `.lempit` directory
+and allows you to choose one and follow the steps to generate the file(s).
+
 
 ## Credits
 [Khaos](https://github.com/segmentio/khaos)
