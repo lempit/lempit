@@ -58,6 +58,28 @@ To create a template you just need to create files filled with mustache template
 
 You can use two commonly used Handlebars helpers `raw-helper`, `if`, `if_eq` and `unless_eq`. The `if_eq` and `unless_eq` helpers intended to create a multiple choice questions. Thanks to [vue-cli](https://github.com/vuejs/vue-cli) for the idea!
 
+Here's the list of available helpers:
+
+| Helper          | Description                                                           |
+| - |
+| **Logics** |
+| `raw-helper`      | [Raw Blocks](http://handlebarsjs.com/block_helpers.html#raw-blocks).  |
+| `if` or `#`       | The `if` blocks that resulting (Yes/No) question.                     |
+| `if_eq`           | More like `swicth` to create multiple choice.                         |
+| `unless_eq`       | Unless equals blocks.                                                 |
+| **Strings** |
+| `lowercase`       | [Converts string, as space separated words, to lower case](https://lodash.com/docs/4.17.4#lowerCase)  |
+| `camelcase`       | [Converts string to camel case.](https://lodash.com/docs/4.17.4#camelCase)  |
+| `uppercase`       | [Converts string, as space separated words, to upper case.](https://lodash.com/docs/4.17.4#upperCase) |
+| `upperfirst`      | [Converts the first character of string to upper case.](https://lodash.com/docs/4.17.4#upperFirst)    |
+| `startcase`       | [Converts string to start case.](https://lodash.com/docs/4.17.4#startCase)  |
+| `kebabcase`       | [Converts string to kebab case.](https://lodash.com/docs/4.17.4#kebabCase)  |
+| `snakecase`       | [Converts string to snake case.](https://lodash.com/docs/4.17.4#snakeCase)  |
+| **Paths** |
+| `rela`            | Convert an absolute path to a relative path.                          |
+
+
+
 #### Metadata file
 
 While asking user to answer the questions, you may want to display a words rather than variable names. All you need to do is to create file either `meta.json` or `meta.js` under the root directory of your template. If you are using Handlebars helpers `if_eq` or `unless_eq`, then **metadata file** is required to define the **choices**.
