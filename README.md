@@ -61,7 +61,7 @@ You can use two commonly used Handlebars helpers `raw-helper`, `if`, `if_eq` and
 Here's the list of available helpers:
 
 | Helper          | Description                                                           |
-| - |
+| --- | --- |
 | **Logics** |
 | `raw-helper`      | [Raw Blocks](http://handlebarsjs.com/block_helpers.html#raw-blocks).  |
 | `if` or `#`       | The `if` blocks that resulting (Yes/No) question.                     |
