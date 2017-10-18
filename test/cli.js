@@ -23,6 +23,9 @@ describe("#lempit cli tests", function() {
     it("handlerbars strings", function(done) {
       assertLempitInit("handlebars-strings", done);
     });
+    it("handlerbars paths", function(done) {
+      assertLempitInit("handlebars-paths", done);
+    });
     it("boolean input", function(done) {
       assertLempitInit("bool", done);
     });
