@@ -1,15 +1,15 @@
-var assert = require("assert");
-var utils = require("./utils");
-var assertLempitInit = utils.assertLempitInit;
-var assertLempitNew = utils.assertLempitNew;
-var lempit = utils.lempit;
+const assert = require("assert");
+const utils = require("./utils");
+const assertLempitInit = utils.assertLempitInit;
+const assertLempitNew = utils.assertLempitNew;
+const lempit = utils.lempit;
 
 process.setMaxListeners(0);
 
 describe("#lempit cli tests", function() {
   describe("#common tests", function() {
     it("should show help without any args", function(done) {
-      lempit("init", [], function(err, stdout, stderr) {
+      lempit("init", [], function(err, stdout) {
         assert(-stdout.indexOf("Usage: lempit-init <source> <project-name> [options]"));
         done(err);
       });

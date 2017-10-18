@@ -1,8 +1,7 @@
-var spawn = require("child_process").spawn;
-var path = require("path");
-var assertDir = require("assert-dir-equal");
-var rm = require("rimraf").sync;
-var lempit = require("./lempit");
+const path = require("path");
+const assertDir = require("assert-dir-equal");
+const rm = require("rimraf").sync;
+const lempit = require("./lempit");
 
 const dest = path.resolve(__dirname, "tmp");
 
@@ -30,14 +29,14 @@ function getFixture(name) {
  */
 function findField(str) {
   const whiteList = ["*", "?"];
-  var skip = true;
+  let skip = true;
   whiteList.forEach(w => {
     if (str.startsWith(w)) skip = false;
   });
 
   if (skip) return "";
 
-  var res = /.\s(\w+):/g.exec(str);
+  const res = /.\s(\w+):/g.exec(str);
   if (res && res.length > 1) return res[1];
   throw "could not resolve field [" + str + "].";
 }
@@ -49,16 +48,16 @@ function findField(str) {
  * @param {Function} done callback
  */
 module.exports = function(fixture, done) {
-  var f = getFixture(fixture);
-  var stderr = "";
-  var child = lempit("init", [f.src, dest]);
-  var answering = "";
+  const f = getFixture(fixture);
+  const child = lempit("init", [f.src, dest]);
+  let stderr = "";
+  let answering = "";
 
   // capture output data
   child.stdout.on("data", function(data) {
     // get question
-    var q = data.toString();
-    var field = findField(q);
+    const q = data.toString();
+    const field = findField(q);
     if (field && answering !== field) {
       answering = field;
       setTimeout(function() {

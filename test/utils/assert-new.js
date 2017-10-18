@@ -108,7 +108,7 @@ module.exports = function(fixture, source, options, done) {
       const target = path.join(f.expected, source);
       if (fs.lstatSync(target).isFile()) {
         assertFile(result, target);
-      } else {        
+      } else {
         assertDir(dest, target);
       }
 

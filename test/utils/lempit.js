@@ -1,5 +1,5 @@
-var spawn = require("child_process").spawn;
-var path = require("path");
+const spawn = require("child_process").spawn;
+const path = require("path");
 
 /**
  * Spawn bin/lempit.
@@ -9,8 +9,8 @@ var path = require("path");
  * @returns 
  */
 module.exports = function(cmd, args, callback) {
-  var root = path.resolve(__dirname, "../../");  
-  var _args = [path.resolve(root, "bin/lempit-") + cmd];
+  const root = path.resolve(__dirname, "../../");
+  const _args = [path.resolve(root, "bin/lempit-") + cmd];
 
   // apply arguments
   args = args || [];
@@ -19,8 +19,8 @@ module.exports = function(cmd, args, callback) {
   });
 
   // spawning lempit-<cmd>.
-  var opts = { cwd: process.cwd(), stdio: "pipe" };
-  var child = spawn("node", _args, opts);
+  const opts = { cwd: process.cwd(), stdio: "pipe" };
+  const child = spawn("node", _args, opts);
 
   process.on("exit", function() {
     child.kill();
@@ -28,7 +28,7 @@ module.exports = function(cmd, args, callback) {
 
   // process callback if supplied
   if (callback) {
-    var stdout = "",
+    let stdout = "",
       stderr = "";
 
     child.stdout.on("data", function(data) {
